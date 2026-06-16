@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scanner Hostess - EventTech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #111; color: white; overflow: hidden; }
+        .bg-pattern { background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0); background-size: 24px 24px; }
+        
+        .status-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
+    </style>
+</head>
+<body class="bg-pattern h-screen flex flex-col items-center justify-center p-4">
+
+    <!-- Header de la Tablet de la Hostess -->
+    <div class="absolute top-0 left-0 w-full p-4 flex justify-between items-center bg-black/50 border-b border-gray-800">
+        <h1 class="text-[#c5a059] font-bold tracking-widest uppercase text-sm">EventTech <span class="text-white">Hostess</span></h1>
+        <div class="flex items-center gap-2 text-xs text-gray-400 font-mono" id="reloj-hostess">--:--</div>
+    </div>
+
+    <!-- Contenedor Principal del Resultado -->
+    <div id="resultado-container" class="w-full max-w-md bg-gray-900 border-2 border-gray-800 rounded-2xl shadow-2xl overflow-hidden hidden transition-all duration-500">
+        
+        <!-- PANTALLA 1: ADELANTE (Día del evento) -->
+        <div id="pantalla-verde" class="hidden">
+            <div class="bg-emerald-500 p-8 text-center status-pulse relative overflow-hidden">
+                <i data-lucide="check-circle" class="w-20 h-20 text-white mx-auto mb-2 relative z-10"></i>
+                <h2 class="text-white font-black text-3xl tracking-widest relative z-10">ACCESO AUTORIZADO</h2>
+                <div class="absolute inset-0 bg-white opacity-20 transform -rotate-45 translate-x-full hover:translate-x-[-100%] transition-transform duration-1000"></div>
+            </div>
+            <div class="p-8 text-center bg-gray-900">
+                <p class="text-gray-500 text-[10px] uppercase tracking-widest font-bold mb-1">Invitado VIP</p>
+                <h3 id="verde-nombre" class="text-white text-2xl font-bold mb-6">-</h3>
+                
+                <div class="bg-gray-800 border border-gray-700 rounded-lg p-6 inline-block w-full">
+                    <p class="text-gray-400 text-xs uppercase tracking-widest mb-2">Asignación</p>
+                    <div class="text-[#c5a059] text-5xl font-black" id="verde-mesa">-</div>
+                </div>
+                
+                <button onclick="window.close()" class="mt-8 w-full bg-gray-800 text-white py-4 rounded font-bold uppercase tracking-widest border border-gray-700 hover:bg-gray-700">Siguiente Invitado</button>
+            </div>
+        </div>
+
+        <!-- PANTALLA 2: AÚN NO ES HORA (Días antes) -->
+        <div id="pantalla-amarilla" class="hidden">
+            <div class="bg-amber-500 p-8 text-center">
+                <i data-lucide="clock" class="w-20 h-20 text-white mx-auto mb-2"></i>
+                <h2 class="text-white font-black text-2xl tracking-widest">PASE INACTIVO</h2>
+            </div>
+            <div class="p-8 text-center bg-gray-900">
+                <p class="text-red-400 text-sm font-bold mb-4 uppercase tracking-widest">El evento no es hoy</p>
+                <p class="text-gray-400 text-sm mb-6">Este código QR es válido, pero el sistema central lo activará automáticamente el <strong>24 de Octubre de 2026 a las 15:00 hrs</strong>.</p>
+                <p class="text-gray-600 text-xs">Pase de: <span id="amarillo-nombre" class="font-bold text-gray-400"></span></p>
+            </div>
+        </div>
+
+        <!-- PANTALLA 3: EXPIRADO (Días después) -->
+        <div id="pantalla-roja" class="hidden">
+            <div class="bg-red-600 p-8 text-center">
+                <i data-lucide="x-octagon" class="w-20 h-20 text-white mx-auto mb-2"></i>
+                <h2 class="text-white font-black text-2xl tracking-widest">PASE EXPIRADO</h2>
+            </div>
+            <div class="p-8 text-center bg-gray-900">
+                <p class="text-gray-400 text-sm mb-6">La fecha de este evento ya pasó. Este pase ha sido invalidado permanentemente por seguridad.</p>
+            </div>
+        </div>
+
+        <!-- PANTALLA 4: ERROR (Código falso) -->
+        <div id="pantalla-falsa" class="hidden">
+            <div class="bg-gray-800 p-8 text-center border-b border-red-500/30">
+                <i data-lucide="alert-triangle" class="w-20 h-20 text-red-500 mx-auto mb-2"></i>
+                <h2 class="text-red-500 font-black text-xl tracking-widest uppercase">Código Falsificado</h2>
+            </div>
+            <div class="p-8 text-center bg-gray-900">
+                <p class="text-gray-400 text-sm mb-6">Este código QR no pertenece a nuestros registros oficiales de EventTech.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Reloj en tiempo real
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('reloj-hostess').innerText = now.toLocaleTimeString();
+        }, 1000);
+
+        // FECHAS DEL EVENTO (Configurables)
+        // El pase se activa el 24 de Octubre de 2026 a las 00:00:00
+        const fechaInicioEvento = new Date('October 24, 2026 00:00:00').getTime();
+        // El pase expira el 25 de Octubre de 2026 a las 06:00:00 (al terminar la fiesta)
+        const fechaFinEvento = new Date('October 25, 2026 06:00:00').getTime();
+
+        // Leer los datos del QR (desde la URL)
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const invitado = urlParams.get('invitado');
+            const mesa = urlParams.get('mesa');
+            const telefono = urlParams.get('tel'); // Aquí podríamos validar con Firebase usando este tel
+            
+            const container = document.getElementById('resultado-container');
+            container.classList.remove('hidden');
+
+            // Si el QR no trae parámetros, es falso
+            if(!invitado || !mesa) {
+                document.getElementById('pantalla-falsa').classList.remove('hidden');
+                container.classList.add('border-red-500', 'shadow-[0_0_50px_rgba(239,68,68,0.3)]');
+                return;
+            }
+
+            // LÓGICA DEL TIEMPO (El QR Durmiente)
+            const ahora = new Date().getTime();
+
+            if (ahora < fechaInicioEvento) {
+                // MUY TEMPRANO (Pantalla Amarilla)
+                document.getElementById('pantalla-amarilla').classList.remove('hidden');
+                document.getElementById('amarillo-nombre').innerText = decodeURIComponent(invitado);
+                container.classList.add('border-amber-500', 'shadow-[0_0_50px_rgba(245,158,11,0.3)]');
+            
+            } else if (ahora > fechaFinEvento) {
+                // MUY TARDE (Pantalla Roja)
+                document.getElementById('pantalla-roja').classList.remove('hidden');
+                container.classList.add('border-red-600', 'shadow-[0_0_50px_rgba(220,38,38,0.3)]');
+            
+            } else {
+                // DÍA DEL EVENTO (Pantalla Verde)
+                // (Aquí en el futuro haríamos que Firebase marque el boleto como "Usado")
+                document.getElementById('pantalla-verde').classList.remove('hidden');
+                document.getElementById('verde-nombre').innerText = decodeURIComponent(invitado);
+                document.getElementById('verde-mesa').innerText = 'MESA ' + decodeURIComponent(mesa);
+                container.classList.add('border-emerald-500', 'shadow-[0_0_80px_rgba(16,185,129,0.5)]');
+            }
+        };
+    </script>
+</body>
+</html>
