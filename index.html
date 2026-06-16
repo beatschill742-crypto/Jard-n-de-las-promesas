@@ -16,28 +16,20 @@
     <style>
         body { 
             font-family: 'Montserrat', sans-serif; 
-            background-color: #0f172a; /* Azul marino muy oscuro */
+            background-color: #0f172a; 
             color: #f8fafc; 
             overflow-x: hidden;
         }
         .font-serif-elegant { font-family: 'Playfair Display', serif; }
-        
-        /* Tonos dorados avejentados/cognac */
         .gold-gradient-text { background: linear-gradient(135deg, #a17a41, #d4af37, #a17a41); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .gold-bg { background: linear-gradient(135deg, #c5a059, #a17a41); }
-        
-        /* Animación de entrada */
         .fade-in-up { animation: fadeInUp 1.2s ease-out forwards; opacity: 0; transform: translateY(30px); }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
-        /* Fondo de la portada con textura sutil */
         .hero-bg {
             background-color: #0f172a;
             background-image: radial-gradient(circle at 50% 50%, rgba(197, 160, 89, 0.1) 0%, transparent 60%);
             position: relative;
         }
-        
-        /* Líneas decorativas clásicas */
         .classic-border {
             border: 1px solid rgba(197, 160, 89, 0.3);
             padding: 4px;
@@ -47,15 +39,11 @@
             content: ''; position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px;
             border: 1px solid rgba(197, 160, 89, 0.15); pointer-events: none;
         }
-
-        /* Destellos flotantes (Partículas doradas) */
         .sparkle {
             position: absolute; width: 2px; height: 2px; background: #c5a059; border-radius: 50%;
             box-shadow: 0 0 8px 1px rgba(197, 160, 89, 0.4); animation: floatUp 6s infinite linear; opacity: 0;
         }
         @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-100px) scale(0); opacity: 0; } }
-
-        /* Separador Elegante */
         .separator { display: flex; align-items: center; justify-content: center; margin: 2.5rem 0; opacity: 0.8; }
         .separator::before, .separator::after { content: ''; height: 1px; width: 80px; background-color: #c5a059; opacity: 0.5; }
         .separator-icon { margin: 0 15px; color: #c5a059; font-size: 1.2rem; }
@@ -66,13 +54,9 @@
 
     <div id="particles" class="fixed inset-0 pointer-events-none z-50"></div>
 
-    <!-- ==============================================
-         SECCIÓN 1: PORTADA (HERO)
-         ============================================== -->
+    <!-- SECCIÓN 1: PORTADA -->
     <header class="hero-bg min-h-screen flex flex-col items-center justify-center relative px-4 text-center">
-        <!-- Borde clásico perimetral -->
         <div class="absolute inset-5 md:inset-8 border border-[#c5a059]/20 pointer-events-none">
-            <!-- Esquinas -->
             <div class="absolute -top-1 -left-1 w-2 h-2 bg-[#c5a059]"></div>
             <div class="absolute -top-1 -right-1 w-2 h-2 bg-[#c5a059]"></div>
             <div class="absolute -bottom-1 -left-1 w-2 h-2 bg-[#c5a059]"></div>
@@ -80,9 +64,7 @@
         </div>
 
         <div class="relative z-10 fade-in-up flex flex-col items-center w-full max-w-md">
-            
             <p class="font-sans text-[9px] uppercase tracking-[0.4em] text-[#94a3b8] mb-8 font-medium">Estás invitado a celebrar</p>
-            
             <h1 class="font-serif-elegant text-5xl md:text-6xl text-white mb-2 leading-tight uppercase tracking-widest">Roberto</h1>
             <h2 class="font-serif-elegant text-2xl md:text-3xl text-[#c5a059] mb-8 italic">Gómez</h2>
             
@@ -106,9 +88,7 @@
         </div>
     </header>
 
-    <!-- ==============================================
-         SECCIÓN 2: CUENTA REGRESIVA
-         ============================================== -->
+    <!-- SECCIÓN 2: CUENTA REGRESIVA -->
     <section class="py-20 px-4 bg-[#1e293b] text-center border-y border-[#c5a059]/10">
         <h2 class="font-serif-elegant text-xl uppercase tracking-[0.3em] text-[#c5a059] mb-10 font-bold">La celebración comienza en</h2>
         
@@ -137,64 +117,18 @@
         </p>
     </section>
 
-    <!-- ==============================================
-         SECCIÓN 3: UBICACIÓN Y DETALLES
-         ============================================== -->
-    <section class="py-24 px-4 bg-[#0f172a]">
-        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-            
-            <!-- Recepción -->
-            <div class="text-center p-8 border border-[#c5a059]/20 relative bg-[#1e293b]/30">
-                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-[#0f172a] px-4">
-                    <i data-lucide="map-pin" class="w-8 h-8 text-[#c5a059]"></i>
-                </div>
-                <h3 class="font-serif-elegant text-xl text-white mt-4 mb-2 uppercase tracking-widest">El Evento</h3>
-                <p class="text-[10px] uppercase tracking-[0.2em] text-[#94a3b8] font-bold mb-4">Comida y Recepción</p>
-                <p class="text-sm text-[#cbd5e1] mb-2 font-medium">Hacienda "El Centenario"</p>
-                <p class="text-xs text-[#94a3b8] mb-8 leading-relaxed">Carretera Federal Km 15, Valle de Bravo, Estado de México.</p>
-                <a href="#" class="inline-block border border-[#c5a059] text-[#c5a059] px-6 py-2 text-xs uppercase tracking-widest hover:bg-[#c5a059] hover:text-white transition duration-300">
-                    Abrir en GPS
-                </a>
-            </div>
-
-            <!-- Detalles (Código de Vestimenta) -->
-            <div class="text-center p-8 border border-[#c5a059]/20 relative bg-[#1e293b]/30">
-                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-[#0f172a] px-4">
-                    <i data-lucide="clock" class="w-8 h-8 text-[#c5a059]"></i>
-                </div>
-                <h3 class="font-serif-elegant text-xl text-white mt-4 mb-2 uppercase tracking-widest">Información</h3>
-                <div class="space-y-6 mt-6">
-                    <div>
-                        <p class="text-[10px] uppercase tracking-[0.2em] text-[#c5a059] font-bold mb-1">Código de Vestimenta</p>
-                        <p class="text-sm text-[#cbd5e1]">Guayabera / Vestido Cóctel</p>
-                    </div>
-                    <div class="h-px w-12 bg-[#c5a059]/20 mx-auto"></div>
-                    <div>
-                        <p class="text-[10px] uppercase tracking-[0.2em] text-[#c5a059] font-bold mb-1">Regalos</p>
-                        <p class="text-xs text-[#94a3b8] leading-relaxed px-4">Su presencia es mi mejor regalo. Si desean tener un detalle, habrá buzón en la entrada.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ==============================================
-         SECCIÓN 4: PASE DIGITAL DE SEGURIDAD (QR DINÁMICO)
-         ============================================== -->
-    <section id="pase-acceso" class="py-24 px-4 bg-[#1e293b] border-t border-[#c5a059]/20 relative overflow-hidden">
-        
+    <!-- SECCIÓN 3: PASE DE ACCESO (EL EMBUDO LOGÍSTICO) -->
+    <section id="pase-acceso" class="py-24 px-4 bg-[#0f172a] border-t border-[#c5a059]/20 relative overflow-hidden">
         <div class="max-w-sm mx-auto relative z-10 text-center">
             
             <i data-lucide="ticket" class="w-10 h-10 text-[#c5a059] mx-auto mb-4"></i>
             <h2 class="font-serif-elegant text-2xl text-white uppercase tracking-[0.2em] mb-2">Pase de Acceso</h2>
             <p class="text-[#94a3b8] text-xs mb-8">Personal e intransferible</p>
 
-            <!-- CONTENEDOR DEL PASE -->
             <div class="classic-border bg-[#0f172a] p-1">
                 <div class="p-6 md:p-8 relative">
 
-                    <!-- PANTALLA 0: ENLACE INVÁLIDO O GENÉRICO -->
+                    <!-- PANTALLA 0: ENLACE INVÁLIDO -->
                     <div x-show="isInvalidLink" class="text-center py-8">
                         <i data-lucide="link-2-off" class="w-12 h-12 text-red-500/50 mx-auto mb-4"></i>
                         <h4 class="font-serif-elegant text-[#c5a059] text-lg mb-2">Enlace de Muestra</h4>
@@ -207,7 +141,6 @@
                         <h4 class="font-serif-elegant text-[#c5a059] text-lg mb-2">Protocolo de Seguridad</h4>
                         <p class="text-[10px] text-[#94a3b8] uppercase tracking-widest mb-6 leading-relaxed">Para revelar tu número de mesa y generar tu código QR, ingresa tu número celular (10 dígitos).</p>
                         
-                        <!-- Mensaje de error personalizado en vez de un alert() -->
                         <div x-show="hasError" class="bg-red-500/10 border border-red-500/30 text-red-400 text-[10px] p-2 mb-3 rounded font-bold tracking-wider uppercase text-center" x-text="errorMessage" style="display: none;"></div>
 
                         <input type="tel" x-model="phoneNum" placeholder="Ej: 5512345678" class="w-full bg-[#1e293b] border border-[#334155] text-white px-4 py-3 text-center text-sm focus:outline-none focus:border-[#c5a059] mb-4 font-mono tracking-widest placeholder-gray-600 rounded">
@@ -218,32 +151,30 @@
                         </button>
                     </div>
 
-                    <!-- PANTALLA 2: DESBLOQUEADO (Muestra info dinámica y QR Real) -->
+                    <!-- PANTALLA 2: DESBLOQUEADO (Muestra info y QR Real Enlazado) -->
                     <div x-show="isUnlocked && !isInvalidLink" style="display: none;" x-transition.opacity.duration.800ms>
                         
-                        <!-- ADVERTENCIA DE CAPTURA -->
+                        <!-- ADVERTENCIA DE CAPTURA DE PANTALLA -->
                         <div class="bg-red-900/20 border border-red-500/30 text-red-400 p-3 mb-6 flex items-start gap-3 text-left rounded">
                             <i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0 mt-0.5 text-red-500"></i>
                             <p class="text-[9px] leading-relaxed uppercase tracking-wider font-bold">¡Importante! Toma captura de pantalla a este pase AHORA. Podría no haber señal de internet en el evento.</p>
                         </div>
 
-                        <!-- Info Dinámica del Invitado -->
+                        <!-- INFO DEL INVITADO -->
                         <div class="w-full bg-[#1e293b] border border-[#c5a059]/20 p-5 mb-6 text-center rounded">
                             <p class="text-[8px] uppercase tracking-[0.2em] text-[#c5a059] mb-1 font-bold">Acomodo Confirmado Para</p>
-                            <!-- Se inyecta el nombre desde la URL -->
                             <p class="font-serif-elegant text-xl text-white mb-4 leading-snug" x-text="invitadoNombre">Cargando...</p>
                             <div class="inline-block border border-[#c5a059] text-[#c5a059] px-6 py-1 text-xs uppercase font-bold tracking-[0.2em] rounded">
                                 Mesa <span x-text="mesaAsignada">-</span>
                             </div>
                         </div>
                         
-                        <!-- EL CONTENEDOR DONDE NACE EL QR REAL -->
+                        <!-- EL QR DURMIENTE -->
                         <div class="bg-white p-3 shadow-lg mb-4 inline-block relative mx-auto rounded">
-                            <!-- Esquinas decorativas -->
                             <div class="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-[#000]"></div>
                             <div class="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-[#000]"></div>
                             
-                            <!-- Aquí qrcode.js pintará el QR -->
+                            <!-- Contenedor del QR Real -->
                             <div id="qr-real-container" class="w-[160px] h-[160px] flex items-center justify-center bg-gray-100">
                                 <i data-lucide="loader" class="w-6 h-6 animate-spin text-gray-400"></i>
                             </div>
@@ -251,7 +182,7 @@
 
                         <div class="text-center mt-2">
                             <p class="text-[8px] uppercase tracking-[0.2em] text-[#c5a059] font-bold mb-1">Pase Encriptado</p>
-                            <p class="text-[9px] text-[#94a3b8] leading-relaxed">Presentar esta pantalla (o la captura de foto) en recepción para tu escaneo de acceso.</p>
+                            <p class="text-[9px] text-[#94a3b8] leading-relaxed">Presentar esta captura en recepción. El código se activará automáticamente el día del evento.</p>
                         </div>
                     </div>
 
@@ -260,12 +191,12 @@
         </div>
     </section>
 
-    <!-- 1. SDK de Firebase (TU PROYECTO CREADOR-DE-PASES) -->
+    <!-- 1. SDK DE FIREBASE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // TU CONFIGURACIÓN EXACTA DE FIREBASE
+        // TU CONFIGURACIÓN REAL DE "CREADOR DE PASES CON NUMERO"
         const firebaseConfig = {
             apiKey: "AIzaSyCMbKo2UIhrL3gOxIHCceuNjb3H9XJqkFE",
             authDomain: "creador-de-pases-con-numero.firebaseapp.com",
@@ -279,10 +210,9 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // Función global para guardar los datos al momento de poner el teléfono
+        // FUNCIÓN GLOBAL PARA ENVIAR A FIREBASE
         window.guardarTelefonoEnFirebase = async (eventoId, nombre, mesa, telefono) => {
             try {
-                // Guarda en la colección "invitados_confirmados"
                 await addDoc(collection(db, "invitados_confirmados"), {
                     evento: eventoId,
                     invitado: nombre,
@@ -290,15 +220,15 @@
                     telefono: telefono,
                     fechaRegistro: serverTimestamp()
                 });
-                return true; // Éxito
+                return true;
             } catch (error) {
-                console.error("Error de conexión con Firebase:", error);
-                return false; // Falló el internet o los permisos
+                console.error("Error de conexión:", error);
+                return false;
             }
         };
     </script>
 
-    <!-- 2. Lógica de la Invitación (Alpine.js) -->
+    <!-- 2. LÓGICA DE LA APLICACIÓN (ALPINE JS) -->
     <script>
         function invitationApp() {
             return {
@@ -306,17 +236,15 @@
                 isSaving: false,
                 phoneNum: '',
                 isInvalidLink: false,
-                
-                // Variables de error sin usar alert()
                 hasError: false,
                 errorMessage: '',
                 
                 days: '00', hours: '00', minutes: '00',
                 targetDate: new Date('October 24, 2026 15:00:00').getTime(),
                 
-                invitadoNombre: 'Cargando...',
-                mesaAsignada: '-',
-                eventoId: 'ROBERTO-60', // ID interno del evento para tu base de datos
+                invitadoNombre: '',
+                mesaAsignada: '',
+                eventoId: 'ROBERTO-60',
 
                 initTimer() {
                     this.parseUrl();
@@ -324,9 +252,7 @@
                     setInterval(() => {
                         const now = new Date().getTime();
                         const distance = this.targetDate - now;
-
                         if (distance < 0) return;
-
                         this.days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
                         this.hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
                         this.minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
@@ -336,7 +262,7 @@
                     this.createParticles();
                 },
 
-                // Esta función lee el link (ej. ?id=familia-perez-m8)
+                // LECTURA DEL LINK (?id=Familia-Gomez-m4)
                 parseUrl() {
                     const urlParams = new URLSearchParams(window.location.search);
                     const idParam = urlParams.get('id');
@@ -356,14 +282,14 @@
                     }
                 },
 
-                // Esta función se ejecuta cuando le dan clic a "Activar Pase Especial"
+                // FUNCIÓN DEL BOTÓN "ACTIVAR PASE"
                 async unlockPass() {
-                    this.hasError = false; // Ocultamos el error si lo había
+                    this.hasError = false;
                     
                     if(this.phoneNum.length >= 10) {
-                        this.isSaving = true; // Prendemos el botón "Procesando..."
+                        this.isSaving = true; 
                         
-                        // 1. Mandamos el teléfono a tu Firebase
+                        // 1. Mandamos el teléfono a Firebase
                         const guardadoExitoso = await window.guardarTelefonoEnFirebase(
                             this.eventoId,
                             this.invitadoNombre,
@@ -372,31 +298,34 @@
                         );
 
                         if (!guardadoExitoso) {
-                            // Si falla por alguna razón, mostramos mensaje rojo, CERO ALERTAS
                             this.errorMessage = "Hubo un problema de conexión. Intenta de nuevo.";
                             this.hasError = true;
                             this.isSaving = false;
                             return; 
                         }
 
-                        // 2. Si se guardó correctamente, mostramos el QR
+                        // 2. Si se guardó correctamente, mostramos el QR enlazado a la Hostess
                         this.isSaving = false;
                         this.isUnlocked = true;
                         
                         setTimeout(() => {
-                            // Esta es la info que el QR esconderá adentro para que lo lea la hostess
-                            const infoParaLaHostess = `Evento: ${this.eventoId} | Invitado: ${this.invitadoNombre} | Mesa: ${this.mesaAsignada} | Tel: ${this.phoneNum}`;
+                            // MAGIA: Construimos la URL correcta hacia tu archivo hostess.html
+                            const urlBase = window.location.href.split('?')[0]; // Quita los parametros de la URL actual
+                            const rutaBase = urlBase.substring(0, urlBase.lastIndexOf('/')); // Saca el nombre de la carpeta (tu repo)
+                            
+                            // Creamos el enlace cifrado
+                            const infoParaLaHostess = `${rutaBase}/hostess.html?invitado=${encodeURIComponent(this.invitadoNombre)}&mesa=${encodeURIComponent(this.mesaAsignada)}&tel=${encodeURIComponent(this.phoneNum)}`;
                             
                             const qrContainer = document.getElementById("qr-real-container");
-                            qrContainer.innerHTML = ""; // Limpiamos el loader
+                            qrContainer.innerHTML = ""; 
                             
-                            // Dibujamos el QR
+                            // Generamos el código
                             new QRCode(qrContainer, {
                                 text: infoParaLaHostess,
                                 width: 160,
                                 height: 160,
                                 colorDark : "#000000",
-                                colorLight : "#f3f4f6", // Mismo gris que el fondo
+                                colorLight : "#f3f4f6", 
                                 correctLevel : QRCode.CorrectLevel.M
                             });
                         }, 50); 
