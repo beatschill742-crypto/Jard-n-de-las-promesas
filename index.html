@@ -4,153 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celebración de Cumpleaños</title>
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS para el diseño -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Librería para el Código QR -->
+    <!-- Librería para crear el QR -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0f172a; /* Azul marino muy oscuro */
-            color: #f8fafc;
-        }
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-        }
-        .text-gold {
-            color: #d4af37;
-        }
-        .bg-gold {
-            background-color: #d4af37;
-        }
-        .border-gold {
-            border-color: #d4af37;
-        }
-        .bg-pattern {
-            background-image: radial-gradient(#d4af37 1px, transparent 1px);
-            background-size: 30px 30px;
-            background-color: #0f172a;
-            opacity: 0.05;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -1;
-        }
-        
-        /* Animaciones */
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-        .emergency-alert {
-            animation: pulse-soft 2s infinite;
-        }
-    </style>
 </head>
-<body class="antialiased relative pb-20">
-    <div class="bg-pattern"></div>
+<body class="bg-[#0f172a] text-white font-sans p-4">
 
-    <!-- HEADER / PORTADA -->
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0f172a] z-0"></div>
-        <div class="z-10 w-full max-w-lg">
-            <p class="uppercase tracking-[0.3em] text-sm text-gold mb-4 font-light">Estás cordialmente invitado a la celebración</p>
-            <h1 class="text-7xl md:text-8xl font-bold text-gold mb-2 leading-none">60</h1>
-            <h2 class="text-3xl md:text-4xl serif italic mb-8">Años de Roberto</h2>
-            
-            <div class="w-16 h-px bg-gold mx-auto mb-8"></div>
-            
-            <p class="text-lg md:text-xl font-light mb-2">SÁBADO 24 DE OCTUBRE</p>
-            <p class="text-sm text-gray-400 mb-8">OCHO DE LA NOCHE</p>
-            
-            <a href="#pase-digital" class="inline-block border border-gold text-gold px-8 py-3 uppercase tracking-widest text-sm hover:bg-gold hover:text-[#0f172a] transition-all duration-300">
-                Obtener mi Acceso
-            </a>
-        </div>
-    </header>
-
-    <!-- DETALLES -->
-    <section class="py-20 px-6 max-w-2xl mx-auto text-center z-10 relative">
-        <h3 class="text-3xl serif text-gold mb-12">Detalles del Evento</h3>
+    <div class="max-w-md mx-auto bg-[#1e293b] p-8 rounded-xl shadow-2xl border border-gray-700">
+        <h1 class="text-3xl text-center text-yellow-500 mb-6 font-bold">Roberto 60 Años</h1>
         
-        <div class="grid md:grid-cols-2 gap-12">
-            <!-- Ubicación -->
-            <div class="bg-[#1e293b] p-8 rounded-sm border border-gray-800">
-                <svg class="w-10 h-10 text-gold mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                <h4 class="text-xl serif mb-2">Recepción</h4>
-                <p class="text-sm text-gray-400 mb-4">Salón Lapislázuli<br>Av. de las Fuentes 123, Ciudad</p>
-                <a href="#" class="text-gold text-xs uppercase tracking-wider underline hover:text-white transition">Ver Mapa</a>
-            </div>
-
-            <!-- Dress Code -->
-            <div class="bg-[#1e293b] p-8 rounded-sm border border-gray-800">
-                <svg class="w-10 h-10 text-gold mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                <h4 class="text-xl serif mb-2">Código de Vestimenta</h4>
-                <p class="text-sm text-gray-400">Formal / Etiqueta Rigurosa<br>Hombres: Traje Oscuro<br>Mujeres: Vestido Largo</p>
-            </div>
+        <!-- Info del invitado (Se llena solo con el link) -->
+        <div id="info-invitado" class="bg-black/30 p-4 rounded-lg mb-6 text-center">
+            <p class="text-gray-400 text-xs uppercase">Pase para:</p>
+            <p id="nombre-invitado" class="text-xl font-bold">Cargando...</p>
+            <p id="mesa-invitado" class="text-yellow-500 font-bold">Mesa: --</p>
         </div>
-    </section>
 
-    <!-- SECCIÓN DE PASE DIGITAL CON SEGURIDAD -->
-    <section id="pase-digital" class="py-20 px-6 max-w-lg mx-auto relative z-10">
-        <div class="bg-black/50 backdrop-blur-md p-8 rounded-xl border border-gold/30 text-center shadow-2xl">
-            <h3 class="text-2xl serif text-gold mb-2">Tu Pase Digital</h3>
-            <p class="text-sm text-gray-400 mb-6">El acceso es estrictamente personal. Ingresa tu número de celular para activar tu pase de seguridad.</p>
-
-            <div id="invitadoInfoDisplay" class="bg-[#1e293b] p-4 rounded-lg mb-6 border border-gray-700 hidden">
-                <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Pase Asignado a:</p>
-                <p id="nombreInvitadoText" class="text-lg font-bold text-white serif">Buscando...</p>
-                <p id="mesaInvitadoText" class="text-sm text-gold mt-1">Mesa: --</p>
-            </div>
-
-            <!-- Formulario de Activación -->
-            <div id="activacion-box">
-                <div class="flex items-center bg-[#0f172a] border border-gray-700 rounded-lg overflow-hidden mb-4">
-                    <span class="pl-4 text-gray-500">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    </span>
-                    <input type="tel" id="telefono" placeholder="Ej. 5512345678" class="w-full bg-transparent text-white p-4 focus:outline-none placeholder-gray-600" maxlength="10">
-                </div>
-                <div id="error-msg" class="text-red-400 text-sm mb-4 hidden">Por favor ingresa un número válido a 10 dígitos.</div>
-                
-                <button id="btn-activar" class="w-full bg-gold text-black font-bold py-4 rounded-lg uppercase tracking-wider hover:bg-yellow-500 transition shadow-[0_0_15px_rgba(212,175,55,0.3)]">
-                    Activar Pase Especial
-                </button>
-            </div>
-
-            <!-- Código QR Revelado (Oculto inicialmente) -->
-            <div id="qr-box" class="hidden mt-6">
-                <div class="bg-red-900/40 border border-red-500 rounded-lg p-4 mb-6 emergency-alert">
-                    <p class="text-red-200 font-bold text-sm uppercase flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        Toma Captura de Pantalla AHORA
-                    </p>
-                    <p class="text-xs text-red-300 mt-1">El salón podría no tener señal. Guarda esta imagen para mostrarla en recepción.</p>
-                </div>
-
-                <div class="bg-white p-4 rounded-xl inline-block">
-                    <!-- Aquí se dibujará el QR -->
-                    <div id="qrcode" class="mx-auto flex justify-center"></div>
-                </div>
-                
-                <p class="text-green-400 font-bold mt-4">¡Pase Activado Exitosamente!</p>
-                <p class="text-xs text-gray-500 mt-2">Este código QR está encriptado y será válido únicamente el día del evento.</p>
-            </div>
+        <!-- Formulario para activar -->
+        <div id="form-activacion">
+            <input type="tel" id="telefono" placeholder="Tu número de celular" class="w-full p-3 rounded bg-gray-900 border border-gray-600 mb-4 text-center">
+            <button id="btn-activar" class="w-full bg-yellow-600 hover:bg-yellow-500 py-3 rounded font-bold">ACTIVAR PASE</button>
+            <p id="error-msg" class="text-red-400 text-sm mt-2 text-center hidden">Error de conexión. Intenta de nuevo.</p>
         </div>
-    </section>
 
-    <footer class="text-center pb-8 text-gray-600 text-xs">
-        <p>Tecnología de Logística Premium para Eventos</p>
-    </footer>
+        <!-- QR (Se muestra al activar) -->
+        <div id="box-qr" class="hidden text-center">
+            <div id="qrcode" class="flex justify-center bg-white p-2 rounded inline-block"></div>
+            <p class="mt-4 text-sm text-green-400 font-bold">¡Pase Activado!</p>
+            <p class="text-xs text-gray-400 mt-2">Toma captura de pantalla a este QR.</p>
+        </div>
+    </div>
 
-    <!-- LOGICA DE FIREBASE Y CÓDIGO QR -->
+    <!-- EL CÓDIGO QUE CONECTA TODO -->
     <script type="module">
-        // 1. IMPORTACIONES DE FIREBASE
+        // 1. IMPORTAR FIREBASE
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-        // 2. TU CONFIGURACIÓN REAL DE FIREBASE (El proyecto creador-de-pases-con-numero)
+        // 2. CONFIGURACIÓN (Tu llave)
         const firebaseConfig = {
             apiKey: "AIzaSyCMbKo2UIhrL3gOxIHCceuNjb3H9XJqkFE",
             authDomain: "creador-de-pases-con-numero.firebaseapp.com",
@@ -161,120 +53,72 @@
             measurementId: "G-PQ0MK0QRGH"
         };
 
-        // 3. INICIALIZAR FIREBASE
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // LOGICA DE LA INVITACION
-        class PaseDigital {
-            constructor() {
-                this.eventoId = "ROBERTO-60";
-                this.invitadoNombre = "Enlace no válido";
-                this.mesaAsignada = "Sin mesa";
-                this.phoneNum = "";
-                this.init();
-            }
+        // 3. LOGICA DE LA PAGINA
+        const urlParams = new URLSearchParams(window.location.search);
+        const idParam = urlParams.get('id'); // Ejemplo: Familia-Gomez-m4
 
-            init() {
-                // LEER LA URL Y EXTRAER DATOS (?id=Familia-Gomez-m4)
-                const urlParams = new URLSearchParams(window.location.search);
-                const idParam = urlParams.get('id');
-
-                if (idParam) {
-                    try {
-                        const partes = idParam.split('-m');
-                        if (partes.length === 2) {
-                            // Limpiar guiones y poner en mayúsculas
-                            this.invitadoNombre = partes[0].replace(/-/g, ' ').toUpperCase();
-                            this.mesaAsignada = partes[1];
-                        } else {
-                            this.invitadoNombre = idParam.replace(/-/g, ' ').toUpperCase();
-                            this.mesaAsignada = "Pendiente";
-                        }
-                    } catch (e) {
-                        console.error("Error leyendo URL", e);
-                    }
-                }
-
-                // Mostrar datos en pantalla
-                document.getElementById('nombreInvitadoText').innerText = this.invitadoNombre;
-                document.getElementById('mesaInvitadoText').innerText = "Mesa: " + this.mesaAsignada;
-                document.getElementById('invitadoInfoDisplay').classList.remove('hidden');
-
-                // Asignar evento al botón
-                document.getElementById('btn-activar').addEventListener('click', () => this.activarPase());
-            }
-
-            async activarPase() {
-                const btn = document.getElementById('btn-activar');
-                const telefonoInput = document.getElementById('telefono').value.trim();
-                const errorMsg = document.getElementById('error-msg');
-
-                // Validar teléfono básico (10 números)
-                if (telefonoInput.length < 10 || isNaN(telefonoInput)) {
-                    errorMsg.classList.remove('hidden');
-                    return;
-                }
-
-                // Bloquear botón para evitar doble envío
-                errorMsg.classList.add('hidden');
-                btn.innerText = "PROCESANDO...";
-                btn.disabled = true;
-                btn.classList.add('opacity-50');
-                
-                this.phoneNum = telefonoInput;
-
-                try {
-                    // GUARDAR EN FIREBASE
-                    await addDoc(collection(db, "invitados_confirmados"), {
-                        evento: this.eventoId,
-                        invitado: this.invitadoNombre,
-                        mesa: this.mesaAsignada,
-                        telefono: this.phoneNum,
-                        fecha_activacion: serverTimestamp()
-                    });
-
-                    // Si Firebase tuvo éxito, mostrar el QR
-                    this.mostrarQR();
-
-                } catch (error) {
-                    console.error("Error al guardar en BD: ", error);
-                    errorMsg.innerText = "Error de conexión. Intenta de nuevo.";
-                    errorMsg.classList.remove('hidden');
-                    btn.innerText = "Activar Pase Especial";
-                    btn.disabled = false;
-                    btn.classList.remove('opacity-50');
-                }
-            }
-
-            mostrarQR() {
-                // Ocultar form y mostrar QR box
-                document.getElementById('activacion-box').classList.add('hidden');
-                document.getElementById('qr-box').classList.remove('hidden');
-                
-                // Construir URL que apuntará a TU archivo pases.html dinámicamente
-                const urlBase = window.location.href.split('?')[0].replace('index.html', '');
-                const baseUrlClean = urlBase.endsWith('/') ? urlBase : urlBase + '/';
-                
-                // ¡AQUÍ ESTÁ LA MAGIA! Apuntamos a pases.html con los datos del invitado
-                const enlaceParaHostess = baseUrlClean + "pases.html?invitado=" + encodeURIComponent(this.invitadoNombre) + "&mesa=" + encodeURIComponent(this.mesaAsignada) + "&tel=" + encodeURIComponent(this.phoneNum);
-
-                // Dibujar el Código QR real en la pantalla apuntando a ese enlace
-                new QRCode(document.getElementById("qrcode"), {
-                    text: enlaceParaHostess,
-                    width: 200,
-                    height: 200,
-                    colorDark : "#000000",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.M
-                });
-            }
+        // Separar el nombre de la mesa
+        if (idParam) {
+            const partes = idParam.split('-m');
+            document.getElementById('nombre-invitado').innerText = partes[0].replace(/-/g, ' ');
+            document.getElementById('mesa-invitado').innerText = "Mesa: " + partes[1];
         }
 
-        // Arrancar la aplicación cuando la página cargue
-        document.addEventListener('DOMContentLoaded', () => {
-            new PaseDigital();
+        // Accion del boton
+        document.getElementById('btn-activar').addEventListener('click', async () => {
+            const tel = document.getElementById('telefono').value;
+            const btn = document.getElementById('btn-activar');
+            const error = document.getElementById('error-msg');
+
+            if(tel.length < 10) { 
+                error.classList.remove('hidden'); 
+                return; 
+            }
+
+            btn.innerText = "PROCESANDO...";
+            
+            try {
+                // Guardar en Firebase
+                await addDoc(collection(db, "invitados_confirmados"), {
+                    nombre: document.getElementById('nombre-invitado').innerText,
+                    mesa: document.getElementById('mesa-invitado').innerText,
+                    telefono: tel,
+                    fecha: serverTimestamp()
+                });
+
+                // Crear QR apuntando a tu archivo pases.html
+                document.getElementById('form-activacion').classList.add('hidden');
+                document.getElementById('box-qr').classList.remove('hidden');
+                
+                const urlPases = window.location.href.split('index.html')[0] + "pases.html?invitado=" + document.getElementById('nombre-invitado').innerText;
+                new QRCode(document.getElementById("qrcode"), urlPases);
+            } catch(e) {
+                error.classList.remove('hidden');
+                btn.innerText = "ACTIVAR PASE";
+            }
         });
     </script>
 </body>
 </html>
+```
+
+### El último paso obligatorio (La Regla de Oro)
+Para que Firebase te deje guardar los teléfonos sin que te marque "Error de conexión", tienes que hacer esto una sola vez:
+
+1.  Entra a [Firebase Console](https://console.firebase.google.com/).
+2.  Entra a tu proyecto `creador-de-pases-con-numero`.
+3.  En el menú de la izquierda, dale clic a **Firestore Database**.
+4.  Arriba, vas a ver unas pestañas que dicen "Datos" y **"Reglas"**. Dale clic a **"Reglas"**.
+5.  Vas a ver un código que dice algo como:
+    `allow read, write: if request.time < timestamp.date(2026, 7, 16);`
+    (O algo que dice `false`).
+6.  **Cámbialo para que diga:**
+    ```text
+    allow read, write: if true;
+    ```
+7.  Dale clic al botón **"Publicar"**.
+
+¡Haz esto y el "Error de conexión" desaparecerá mágicamente! Avísame cuando lo publiques.
